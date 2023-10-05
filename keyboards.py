@@ -21,3 +21,23 @@ def back() -> types.InlineKeyboardMarkup:
         types.InlineKeyboardButton(text="Back", callback_data="back")
     )
     return builder.as_markup()
+
+
+def actions() -> types.InlineKeyboardMarkup:
+    actions_list = {
+        "+": "plus",
+        "-": "minus",
+        "*": "multiply",
+        "/": "divide"
+    }
+    builder = InlineKeyboardBuilder()
+    print(actions_list.values())
+    for action, callback_data in actions_list.items():
+        builder.row(
+            types.InlineKeyboardButton(
+                text=action,
+                callback_data=callback_data
+            )
+        )
+    builder.adjust(2)
+    return builder.as_markup()
